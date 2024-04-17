@@ -79,12 +79,12 @@ def initMenu():
                     dotCount = 1
                     while True:
                         if not os.path.isfile(musicData['musicDirectory']):
-                            print(f'{Fore.MAGENTA}Baixando{"." * dotCount}{Style.RESET_ALL}', end='\r')
+                            print(f'{Fore.MAGENTA}Downloading{"." * dotCount}{Style.RESET_ALL}', end='\r')
                             print(end='\x1b[2K' )
                             time.sleep(1)
                             dotCount = 1 if dotCount > 2 else dotCount + 1
                         else:
-                            print(f'{Fore.GREEN}Baixou{Style.RESET_ALL}')
+                            print(f'{Fore.GREEN}Downloaded{Style.RESET_ALL}')
                             chromeBrowser.quit()
                             break
                 else:
@@ -101,27 +101,27 @@ def initMenu():
                     # Pegado informações dos downloads das músicas
                     downloadStatusName = chromeBrowser.find_elements(By.XPATH, '//*[@id="__next"]/div/div[2]/div[2]/div/div/div[1]')
                     for track in downloadStatusName:
-                        print(f'{Fore.MAGENTA} Downloading - {Fore.GREEN}{track.text}{Style.RESET_ALL}')
+                        print(f'{Fore.MAGENTA}Downloading - {Fore.GREEN}{track.text}{Style.RESET_ALL}')
 
                     # Check if has downloaded
                     musicData['zipDirectory'] = os.path.join(mainMusicsPath, musicData['album'] + r'_SpotifyDown_com.zip')
                     dotCount = 1
                     while True:
                         if not os.path.isfile(musicData['zipDirectory']):
-                            print(f'{Fore.MAGENTA}Baixando{"." * dotCount}{Style.RESET_ALL}', end='\r')
+                            print(f'{Fore.MAGENTA}Downloading{"." * dotCount}{Style.RESET_ALL}', end='\r')
                             print(end='\x1b[2K' )
                             time.sleep(1)
                             dotCount = 1 if dotCount > 2 else dotCount + 1
                         else:
-                            print(f'{Fore.GREEN}Baixou{Style.RESET_ALL}')
+                            print(f'{Fore.GREEN}Downloaded{Style.RESET_ALL}')
                             chromeBrowser.quit()
                             break
                 break
             except:
                 if tentativasPassos == 2:
-                    print("Algum erro está ocorrendo, parei com tudo")
+                    print('An error is occurring.')
                 else:
-                    print("REFRESH + Tentativa número ", tentativasPassos)
+                    print("trying again", tentativasPassos)
                     chromeBrowser.refresh()
                     time.sleep(5)
     doActionsInSite()
