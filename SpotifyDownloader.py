@@ -121,7 +121,7 @@ def initMenu():
                 if tentativasPassos == 2:
                     print('An error is occurring.')
                 else:
-                    print("trying again", tentativasPassos)
+                    print("Trying again...", tentativasPassos)
                     chromeBrowser.refresh()
                     time.sleep(5)
     doActionsInSite()
@@ -130,17 +130,17 @@ def initMenu():
         # Checando se tem a pasta do autor já
         musicAuthorPath = os.path.join(mainMusicsPath, musicData['authorName'])
         if os.path.isdir(musicAuthorPath):
-            print('Author exist')
+            print('Author folder exist')
         else:
-            print(f"Don't exist... Creating paste called {musicData['authorName']}")
+            print(f"Author folder Don't exist... Creating paste called {musicData['authorName']}")
             os.mkdir(musicAuthorPath)
         
         # Checando se tem o album da música já
         albumNamePath = os.path.join(musicAuthorPath, musicData['album'])
         if os.path.isdir(albumNamePath):
-            print('Album exist')
+            print('Album folder exist')
         else:
-            print(f"Don't exist... Creating paste called {musicData['album']}")
+            print(f"Album folder Don't exist... Creating paste called {musicData['album']}")
             os.mkdir(albumNamePath)
 
         if musicData['musicType'] == 'album':
@@ -152,7 +152,7 @@ def initMenu():
                 os.remove(musicData['zipDirectory'])
                 print(f"{Fore.YELLOW}Done!")
             except:
-                print('erro ao mover')  
+                print('Error when moving')  
                 os.remove(musicData['zipDirectory'])
         else:
             try:
@@ -160,7 +160,7 @@ def initMenu():
                 shutil.move(musicData['musicDirectory'], uga)
                 print(f"{Fore.YELLOW}Done!")
             except:
-                print('erro ao mover')  
+                print('Error when moving')  
                 os.remove(musicData['musicDirectory'])
     createDirectoryOfMusic()
 initMenu()    
